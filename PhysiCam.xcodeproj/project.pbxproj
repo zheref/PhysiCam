@@ -16,6 +16,8 @@
 		9D80121028CBD89200771EE6 /* PhysiCamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D80120F28CBD89200771EE6 /* PhysiCamTests.swift */; };
 		9D80121A28CBD89200771EE6 /* PhysiCamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D80121928CBD89200771EE6 /* PhysiCamUITests.swift */; };
 		9D80121C28CBD89200771EE6 /* PhysiCamUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D80121B28CBD89200771EE6 /* PhysiCamUITestsLaunchTests.swift */; };
+		9D80122A28CBDF0C00771EE6 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 9D80122928CBDF0C00771EE6 /* ComposableArchitecture */; };
+		9D80122C28CBDF0C00771EE6 /* ComposableCoreLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 9D80122B28CBDF0C00771EE6 /* ComposableCoreLocation */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9D80122A28CBDF0C00771EE6 /* ComposableArchitecture in Frameworks */,
+				9D80122C28CBDF0C00771EE6 /* ComposableCoreLocation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -143,6 +147,10 @@
 			dependencies = (
 			);
 			name = PhysiCam;
+			packageProductDependencies = (
+				9D80122928CBDF0C00771EE6 /* ComposableArchitecture */,
+				9D80122B28CBDF0C00771EE6 /* ComposableCoreLocation */,
+			);
 			productName = PhysiCam;
 			productReference = 9D8011F528CBD89000771EE6 /* PhysiCam.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +223,9 @@
 				Base,
 			);
 			mainGroup = 9D8011EC28CBD89000771EE6;
+			packageReferences = (
+				9D80122828CBDF0C00771EE6 /* XCRemoteSwiftPackageReference "rxswift-composable-architecture" */,
+			);
 			productRefGroup = 9D8011F628CBD89000771EE6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -602,6 +613,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9D80122828CBDF0C00771EE6 /* XCRemoteSwiftPackageReference "rxswift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dannyhertz/rxswift-composable-architecture#basic-usage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9D80122928CBDF0C00771EE6 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9D80122828CBDF0C00771EE6 /* XCRemoteSwiftPackageReference "rxswift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+		9D80122B28CBDF0C00771EE6 /* ComposableCoreLocation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9D80122828CBDF0C00771EE6 /* XCRemoteSwiftPackageReference "rxswift-composable-architecture" */;
+			productName = ComposableCoreLocation;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9D8011ED28CBD89000771EE6 /* Project object */;
 }
