@@ -1,29 +1,28 @@
-//
-//  TakeViewController.swift
-//  PhysiCam
-//
-//  Created by Sergio Daniel on 9/10/22.
-//
-
 import UIKit
+import SnapKit
 
 class TakeViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+    
+    var cameraController: CameraController!
+    
+    static func make(withCameraController cameraController: CameraController) -> TakeViewController {
+        let controller = TakeViewController()
+        controller.cameraController = cameraController
+        return controller
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setup()
     }
-    */
+    
+    private func setup() {
+        addChild(cameraController)
+        view.addSubview(cameraController.view)
+        cameraController.view.snp.makeConstraints { make in
+            make.size.equalToSuperview()
+            make.center.equalToSuperview()
+        }
+    }
 
 }

@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		2B42C11C28CC5977003E9FD1 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42C11B28CC5977003E9FD1 /* MainNavigationController.swift */; };
 		2B42C11F28CC59D8003E9FD1 /* TakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42C11E28CC59D8003E9FD1 /* TakeViewController.swift */; };
+		2B42C12128CD178D003E9FD1 /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42C12028CD178D003E9FD1 /* CameraController.swift */; };
+		2B42C12428CD1E6F003E9FD1 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42C12328CD1E6F003E9FD1 /* Alertable.swift */; };
+		2B42C12728CD4350003E9FD1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2B42C12628CD4350003E9FD1 /* SnapKit */; };
+		2B42C12928CD5866003E9FD1 /* Loggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42C12828CD5866003E9FD1 /* Loggable.swift */; };
 		9D8011F928CBD89000771EE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8011F828CBD89000771EE6 /* AppDelegate.swift */; };
 		9D8011FB28CBD89000771EE6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8011FA28CBD89000771EE6 /* SceneDelegate.swift */; };
 		9D8011FD28CBD89000771EE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8011FC28CBD89000771EE6 /* ViewController.swift */; };
@@ -40,6 +44,9 @@
 /* Begin PBXFileReference section */
 		2B42C11B28CC5977003E9FD1 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		2B42C11E28CC59D8003E9FD1 /* TakeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakeViewController.swift; sourceTree = "<group>"; };
+		2B42C12028CD178D003E9FD1 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		2B42C12328CD1E6F003E9FD1 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
+		2B42C12828CD5866003E9FD1 /* Loggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loggable.swift; sourceTree = "<group>"; };
 		9D8011F528CBD89000771EE6 /* PhysiCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhysiCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8011F828CBD89000771EE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D8011FA28CBD89000771EE6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +67,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9D80122A28CBDF0C00771EE6 /* ComposableArchitecture in Frameworks */,
+				2B42C12728CD4350003E9FD1 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +91,7 @@
 		2B42C11928CC5946003E9FD1 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				2B42C12228CD1E4D003E9FD1 /* Convenience */,
 				2B42C11D28CC5989003E9FD1 /* Take */,
 				2B42C11A28CC5958003E9FD1 /* Main */,
 			);
@@ -101,8 +110,18 @@
 			isa = PBXGroup;
 			children = (
 				2B42C11E28CC59D8003E9FD1 /* TakeViewController.swift */,
+				2B42C12028CD178D003E9FD1 /* CameraController.swift */,
 			);
 			path = Take;
+			sourceTree = "<group>";
+		};
+		2B42C12228CD1E4D003E9FD1 /* Convenience */ = {
+			isa = PBXGroup;
+			children = (
+				2B42C12328CD1E6F003E9FD1 /* Alertable.swift */,
+				2B42C12828CD5866003E9FD1 /* Loggable.swift */,
+			);
+			path = Convenience;
 			sourceTree = "<group>";
 		};
 		9D8011EC28CBD89000771EE6 = {
@@ -174,6 +193,7 @@
 			name = PhysiCam;
 			packageProductDependencies = (
 				9D80122928CBDF0C00771EE6 /* ComposableArchitecture */,
+				2B42C12628CD4350003E9FD1 /* SnapKit */,
 			);
 			productName = PhysiCam;
 			productReference = 9D8011F528CBD89000771EE6 /* PhysiCam.app */;
@@ -249,6 +269,7 @@
 			mainGroup = 9D8011EC28CBD89000771EE6;
 			packageReferences = (
 				9D80122828CBDF0C00771EE6 /* XCRemoteSwiftPackageReference "rxswift-composable-architecture" */,
+				2B42C12528CD4350003E9FD1 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 9D8011F628CBD89000771EE6 /* Products */;
 			projectDirPath = "";
@@ -292,10 +313,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B42C12128CD178D003E9FD1 /* CameraController.swift in Sources */,
+				2B42C12428CD1E6F003E9FD1 /* Alertable.swift in Sources */,
 				2B42C11F28CC59D8003E9FD1 /* TakeViewController.swift in Sources */,
 				9D8011FD28CBD89000771EE6 /* ViewController.swift in Sources */,
 				9D8011F928CBD89000771EE6 /* AppDelegate.swift in Sources */,
 				2B42C11C28CC5977003E9FD1 /* MainNavigationController.swift in Sources */,
+				2B42C12928CD5866003E9FD1 /* Loggable.swift in Sources */,
 				9D8011FB28CBD89000771EE6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -636,6 +660,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2B42C12528CD4350003E9FD1 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
 		9D80122828CBDF0C00771EE6 /* XCRemoteSwiftPackageReference "rxswift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dannyhertz/rxswift-composable-architecture#basic-usage";
@@ -647,6 +679,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2B42C12628CD4350003E9FD1 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2B42C12528CD4350003E9FD1 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		9D80122928CBDF0C00771EE6 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9D80122828CBDF0C00771EE6 /* XCRemoteSwiftPackageReference "rxswift-composable-architecture" */;

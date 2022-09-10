@@ -8,6 +8,15 @@ class MainNavigationController: UINavigationController {
         // Do any additional setup after loading the view.
         view.backgroundColor = .purple
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        present(TakeViewController.make(withCameraController: CameraController()), animated: true)
+        super.viewDidAppear(animated)
+    }
 
 }
 
