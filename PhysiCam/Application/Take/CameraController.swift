@@ -6,9 +6,15 @@ class CameraController: UIViewController, Loggable, Alertable {
     
     static var logCategory: String { String(describing: Self.self) }
     
+    // MARK: - Operational
+    
     var queue = DispatchQueue(label: "physiCamera")
     
-    let captureSession = AVCaptureSession()
+    let captureSession: AVCaptureSession = {
+        let session = AVCaptureSession()
+        session.sessionPreset = .photo
+        return session
+    }()
     
     lazy var captureDevice: AVCaptureDevice! = {
         AVCaptureDevice.DiscoverySession(
@@ -23,14 +29,23 @@ class CameraController: UIViewController, Loggable, Alertable {
     var deviceInput: AVCaptureDeviceInput!
     var imageOutput: AVCapturePhotoOutput!
     
-    lazy var previewLayer: AVCaptureVideoPreviewLayer? = {
+    var photoSettings: AVCapturePhotoSettings {
+        let settings = AVCapturePhotoSettings(format: [
+            AVVideoCodecKey: AVVideoCodecType.jpeg
+        ])
+        settings.isHighResolutionPhotoEnabled = true
+        settings.flashMode = .on
+        return settings
+    }
+    
+    // MARK: - UI
+    
+    lazy var previewLayer: CALayer? = {
         let layer = AVCaptureVideoPreviewLayer(session: captureSession)
         layer.videoGravity = .resizeAspectFill
         layer.frame = view.layer.frame
         return layer
     }()
-    
-    var stillImage: UIImage?
     
     let captureButton: UIButton = {
         let button = UIButton(configuration: .filled())
@@ -38,6 +53,10 @@ class CameraController: UIViewController, Loggable, Alertable {
         button.tintColor = .white
         return button
     }()
+    
+    var stillImage: UIImage?
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,11 +76,10 @@ class CameraController: UIViewController, Loggable, Alertable {
         }
         
         setupSession()
+        captureButton.addTarget(self, action: #selector(userDidTapCapture), for: .touchUpInside)
     }
     
     private func setupSession() {
-        captureSession.sessionPreset = .photo
-        
         deviceInput = try? AVCaptureDeviceInput(device: captureDevice)
         imageOutput = AVCapturePhotoOutput()
         
@@ -88,5 +106,28 @@ class CameraController: UIViewController, Loggable, Alertable {
             self?.captureSession.startRunning()
         }
     }
+    
+    @objc private func userDidTapCapture() {
+        imageOutput.isHighResolutionCaptureEnabled = true
+        imageOutput.capturePhoto(with: photoSettings, delegate: self)
+    }
 
+}
+
+extension CameraController: AVCapturePhotoCaptureDelegate {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let error = error {
+            Self.logger.error("Error while capturing photo: \(error.localizedDescription)")
+            alert(withMessage: error.localizedDescription)
+            return
+        }
+        
+        guard let imageData = photo.fileDataRepresentation() else {
+            Self.logger.error("Could not retrieve file data representation from taken photo.")
+            alert(withMessage: "Error fetching photo 😞")
+            return
+        }
+        
+        stillImage = UIImage(data: imageData)
+    }
 }
