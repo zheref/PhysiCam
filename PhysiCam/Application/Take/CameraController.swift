@@ -2,9 +2,17 @@ import UIKit
 import SnapKit
 import AVFoundation
 
+protocol CameraDelegate: AnyObject {
+    func didGet(photoWithData data: Data)
+}
+
 class CameraController: UIViewController, Loggable, Alertable {
     
     static var logCategory: String { String(describing: Self.self) }
+    
+    // MARK: - Business
+    
+    weak var delegate: CameraDelegate?
     
     // MARK: - Operational
     
@@ -128,6 +136,7 @@ extension CameraController: AVCapturePhotoCaptureDelegate {
             return
         }
         
-        stillImage = UIImage(data: imageData)
+        delegate?.didGet(photoWithData: imageData)
+//        stillImage = UIImage(data: imageData)
     }
 }
