@@ -1,5 +1,7 @@
 import UIKit
 import SnapKit
+import ComposableArchitecture
+import RxSwift
 
 class TakeViewController: UIViewController, Loggable {
     
@@ -7,9 +9,17 @@ class TakeViewController: UIViewController, Loggable {
     
     var cameraController: CameraController!
     
-    static func make(withCameraController cameraController: CameraController) -> TakeViewController {
+    static func make(withCameraService cameraService: CameraService) -> TakeViewController {
         let controller = TakeViewController()
-        cameraController.delegate = controller
+        
+        let cameraController = CameraController(store: Store(
+            initialState: CameraState(),
+            reducer: cameraReducer,
+            environment: CameraEnvironment(mainQueue: MainScheduler.instance,
+                                           backgroundQueue: ConcurrentDispatchQueueScheduler(queue: .global()),
+                                           service: cameraService)
+        ))
+        
         controller.cameraController = cameraController
         return controller
     }
@@ -45,13 +55,4 @@ class TakeViewController: UIViewController, Loggable {
         present(alert, animated: true)
     }
 
-}
-
-extension TakeViewController: CameraDelegate {
-    
-    func didGet(photoWithData data: Data) {
-        Self.logger.log("Did get data with \(data.count) bytes")
-        promptForName()
-    }
-    
 }

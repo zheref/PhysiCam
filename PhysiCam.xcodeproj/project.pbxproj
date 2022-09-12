@@ -13,6 +13,12 @@
 		2B42C12428CD1E6F003E9FD1 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42C12328CD1E6F003E9FD1 /* Alertable.swift */; };
 		2B42C12728CD4350003E9FD1 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2B42C12628CD4350003E9FD1 /* SnapKit */; };
 		2B42C12928CD5866003E9FD1 /* Loggable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42C12828CD5866003E9FD1 /* Loggable.swift */; };
+		2B42C12C28CD649E003E9FD1 /* PDFGeneratorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42C12B28CD649E003E9FD1 /* PDFGeneratorService.swift */; };
+		2B42C12E28CD84AD003E9FD1 /* CameraService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42C12D28CD84AD003E9FD1 /* CameraService.swift */; };
+		2B42C13128CD86E1003E9FD1 /* CameraStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42C13028CD86E1003E9FD1 /* CameraStore.swift */; };
+		2B42C13428CE2C3B003E9FD1 /* CameraService+Static.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42C13328CE2C3B003E9FD1 /* CameraService+Static.swift */; };
+		2B42C13628CE2C69003E9FD1 /* CameraService+Conformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42C13528CE2C69003E9FD1 /* CameraService+Conformance.swift */; };
+		2B42C13828CE30C9003E9FD1 /* CameraService+Delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B42C13728CE30C9003E9FD1 /* CameraService+Delegate.swift */; };
 		9D8011F928CBD89000771EE6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8011F828CBD89000771EE6 /* AppDelegate.swift */; };
 		9D8011FB28CBD89000771EE6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8011FA28CBD89000771EE6 /* SceneDelegate.swift */; };
 		9D8011FD28CBD89000771EE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D8011FC28CBD89000771EE6 /* ViewController.swift */; };
@@ -47,6 +53,12 @@
 		2B42C12028CD178D003E9FD1 /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		2B42C12328CD1E6F003E9FD1 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		2B42C12828CD5866003E9FD1 /* Loggable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loggable.swift; sourceTree = "<group>"; };
+		2B42C12B28CD649E003E9FD1 /* PDFGeneratorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFGeneratorService.swift; sourceTree = "<group>"; };
+		2B42C12D28CD84AD003E9FD1 /* CameraService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraService.swift; sourceTree = "<group>"; };
+		2B42C13028CD86E1003E9FD1 /* CameraStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraStore.swift; sourceTree = "<group>"; };
+		2B42C13328CE2C3B003E9FD1 /* CameraService+Static.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraService+Static.swift"; sourceTree = "<group>"; };
+		2B42C13528CE2C69003E9FD1 /* CameraService+Conformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraService+Conformance.swift"; sourceTree = "<group>"; };
+		2B42C13728CE30C9003E9FD1 /* CameraService+Delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CameraService+Delegate.swift"; sourceTree = "<group>"; };
 		9D8011F528CBD89000771EE6 /* PhysiCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhysiCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D8011F828CBD89000771EE6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9D8011FA28CBD89000771EE6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -91,6 +103,7 @@
 		2B42C11928CC5946003E9FD1 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				2B42C12F28CD86CA003E9FD1 /* Camera */,
 				2B42C12228CD1E4D003E9FD1 /* Convenience */,
 				2B42C11D28CC5989003E9FD1 /* Take */,
 				2B42C11A28CC5958003E9FD1 /* Main */,
@@ -110,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				2B42C11E28CC59D8003E9FD1 /* TakeViewController.swift */,
-				2B42C12028CD178D003E9FD1 /* CameraController.swift */,
 			);
 			path = Take;
 			sourceTree = "<group>";
@@ -122,6 +134,35 @@
 				2B42C12828CD5866003E9FD1 /* Loggable.swift */,
 			);
 			path = Convenience;
+			sourceTree = "<group>";
+		};
+		2B42C12A28CD647A003E9FD1 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				2B42C12B28CD649E003E9FD1 /* PDFGeneratorService.swift */,
+				2B42C13228CE2C17003E9FD1 /* CameraService */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		2B42C12F28CD86CA003E9FD1 /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				2B42C12028CD178D003E9FD1 /* CameraController.swift */,
+				2B42C13028CD86E1003E9FD1 /* CameraStore.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
+		2B42C13228CE2C17003E9FD1 /* CameraService */ = {
+			isa = PBXGroup;
+			children = (
+				2B42C12D28CD84AD003E9FD1 /* CameraService.swift */,
+				2B42C13328CE2C3B003E9FD1 /* CameraService+Static.swift */,
+				2B42C13528CE2C69003E9FD1 /* CameraService+Conformance.swift */,
+				2B42C13728CE30C9003E9FD1 /* CameraService+Delegate.swift */,
+			);
+			path = CameraService;
 			sourceTree = "<group>";
 		};
 		9D8011EC28CBD89000771EE6 = {
@@ -148,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				2B42C11928CC5946003E9FD1 /* Application */,
+				2B42C12A28CD647A003E9FD1 /* Services */,
 				9D8011F828CBD89000771EE6 /* AppDelegate.swift */,
 				9D8011FA28CBD89000771EE6 /* SceneDelegate.swift */,
 				9D8011FC28CBD89000771EE6 /* ViewController.swift */,
@@ -313,13 +355,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B42C12E28CD84AD003E9FD1 /* CameraService.swift in Sources */,
 				2B42C12128CD178D003E9FD1 /* CameraController.swift in Sources */,
+				2B42C12C28CD649E003E9FD1 /* PDFGeneratorService.swift in Sources */,
 				2B42C12428CD1E6F003E9FD1 /* Alertable.swift in Sources */,
 				2B42C11F28CC59D8003E9FD1 /* TakeViewController.swift in Sources */,
 				9D8011FD28CBD89000771EE6 /* ViewController.swift in Sources */,
+				2B42C13428CE2C3B003E9FD1 /* CameraService+Static.swift in Sources */,
 				9D8011F928CBD89000771EE6 /* AppDelegate.swift in Sources */,
+				2B42C13128CD86E1003E9FD1 /* CameraStore.swift in Sources */,
+				2B42C13828CE30C9003E9FD1 /* CameraService+Delegate.swift in Sources */,
 				2B42C11C28CC5977003E9FD1 /* MainNavigationController.swift in Sources */,
 				2B42C12928CD5866003E9FD1 /* Loggable.swift in Sources */,
+				2B42C13628CE2C69003E9FD1 /* CameraService+Conformance.swift in Sources */,
 				9D8011FB28CBD89000771EE6 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,7 +14,7 @@ class MainNavigationController: UINavigationController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        present(TakeViewController.make(withCameraController: CameraController()), animated: true)
+        present(TakeViewController.make(withCameraService: CameraService.shared), animated: true)
         super.viewDidAppear(animated)
     }
 
